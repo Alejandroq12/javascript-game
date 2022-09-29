@@ -91,24 +91,28 @@ window.addEventListener('load', function(){
             this.x = this.game.width;
             this.speedX = Math.random() * -1.5 - 0.5;
             this.markedForDeletion = false;
+            this.lives = 5;
+            this.score = this.lives;
         }
         update(){
-            this.x += this.speed;
+            this.x += this.speedX;
             if (this.x + this.width < 0) this.markedForDeletion = true;
         }
         draw(context){
             context.fillStyle = 'red';
             context.fillRect(this.x, this.y, this.width, this.height);
+            context.fillStyle = 'black';
+            context.font = '20px Helvetica';
+            context.fillText(this.lives, this.x, this.y);
         }
     }
     class Angler1 extends Enemy {
         constructor(game){
             super(game);
-            this.width = 228;
-            this.height = 169;
+            this.width = 228 * 0.2;
+            this.height = 169 * 0.2;
             this.y = Math.random() * (this.game.height * 0.9 - this.height);
         }
-
 
     }
     class layer {
@@ -122,14 +126,42 @@ window.addEventListener('load', function(){
             this.game = game;
             this.fontSize = 25;
             this.FontFamily = 'Helvetica';
-            this.color = 'yellow';
+            this.color = 'white';
         }
         draw(context){
-            // ammo
+            context.save();
             context.fillStyle = this.color;
+            context.shadowOffsetX = 2;
+            context.shadowOffsetY = 2;
+            context.shadowColor = 'black';
+            context.font = this.fontSize + 'px ' + this.fontFamily;
+            // score
+            context.fillText('Score: ' + this.game.score, 20, 40)
+            // ammo
             for (let i = 0; i < this.game.ammo; i++){
                 context.fillRect(20 + 5 * i, 50, 3, 20);
             }
+            // timer
+            const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
+            context.fillText('Timer: ' + formattedTime, 20, 100);
+            // game over messages
+            if (this.game.gameOver){
+                context.textAlign = 'center';
+                let message1;
+                let message2;
+                if (this.game.score > this.game.winningScore){
+                    message1 = 'You win!';
+                    message2 = 'Well done!';
+                } else {
+                    message1 = 'You lose!';
+                    message2 = 'Try again next time!';
+                }
+                context.font = '50px ' + this.fontFamily;
+                context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 40);
+                context.font = '25px ' + this.fontFamily;
+                context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 40);
+            }
+            context.restore();
         }
     }
     class Game {
@@ -141,12 +173,21 @@ window.addEventListener('load', function(){
             this.ui = new UI(this);
             this.keys = [];
             this.enemies = [];
+            this.enemyTimer = 0;
+            this.enemyInterval = 1000;
             this.ammo = 20;
             this.maxAmmo = 50;
             this.ammoTimer = 0;
             this.ammoInterval = 500;
+            this.gameOver = false;
+            this.score = 0;
+            this.winningScore = 10;
+            this.gameTime = 0;
+            this.timeLimit = 5000;
         }
         update(deltaTime){
+            if (!this.gameOver) this.gameTime += deltaTime;
+            if (this.gameTime > this.timeLimit) this.gameOver = true;
             this.player.update();
             if (this.ammoTimer > this.ammoInterval){
                 if (this.ammo < this.maxAmmo) this.ammo++;
@@ -156,15 +197,45 @@ window.addEventListener('load', function(){
             }
             this.enemies.forEach(enemy => {
                 enemy.update();
+                if (this.checkCollision(this.player, enemy)){
+                    enemy.markedForDeletion = true;
+                }
+                this.player.projectiles.forEach(projectile => {
+                    if(this.checkCollision(projectile, enemy)){
+                        enemy.lives--;
+                        projectile.markedForDeletion = true;
+                        if (enemy.lives <= 0){
+                            enemy.markedForDeletion = true;
+                            if (!this.gameOver) this.score += enemy.score;
+                            if (this.score > this.winningScore) this.gameOver = true;
+                        }
+                    }
+                })
             });
             this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
+            if (this.enemyTimer > this.enemyInterval && !this.gameOver ){
+                this.addEnemy();
+                this.enemyTimer = 0;
+            } else {
+                this.enemyTimer += deltaTime;
+            }
         }
         draw(context){
             this.player.draw(context);
             this.ui.draw(context);
             this.enemies.forEach(enemy => {
-                enemy.draw();
+                enemy.draw(context);
             });
+        }
+        addEnemy(){
+            this.enemies.push(new Angler1(this));
+            console.log(this.enemies);
+        }
+        checkCollision(rect1, rect2){
+            return (    rect1.x < rect2.x + rect2.width &&
+                        rect1.x + rect1.width > rect2.x &&
+                        rect1.y < rect2.y + rect2.height &&
+                        rect1.height + rect1.y > rect2.y)
         }
     }
     const game = new Game(canvas.width, canvas.height);

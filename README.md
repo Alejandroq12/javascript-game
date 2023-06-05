@@ -84,39 +84,21 @@ To get a local copy up and running, follow these steps.
 To execute this project, all you require is a web browser.
 Note: If you wish to modify the code, you will also need a code editor such as Visual Studio Code.
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
-Example commands:
-
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/Alejandroq12/javascript-game.git
 ```
---->
 
 ### Install
 
-Install this project with:
+You can install necessary software or dependencies for this project using the following command:
 
-<!--
-Example command:
-
-```sh
-  cd my-project
-  gem install
-```
---->
+No additional installations are necessary due to the nature of this project.
 
 ### Usage
 

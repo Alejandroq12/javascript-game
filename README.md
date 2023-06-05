@@ -60,11 +60,8 @@ This game was created using JavaScript, CSS and HTML
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **Interactive game.**
+- **2D game.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -72,9 +69,7 @@ This game was created using JavaScript, CSS and HTML
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://alejandroq12.github.io/javascript-game/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

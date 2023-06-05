@@ -77,13 +77,12 @@ This game was created using JavaScript, CSS and HTML
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+To execute this project, all you require is a web browser.
+Note: If you wish to modify the code, you will also need a code editor such as Visual Studio Code.
 
 <!--
 Example command:

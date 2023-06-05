@@ -110,15 +110,18 @@ Test will be available in the future. I am working on it.
 
 ### Deployment
 
-You can deploy this project using:
+You can deploy this project using GitHub pages:
 
-<!--
-Example:
-
-```sh
-
-```
- -->
+1. Log in to your GitHub account and navigate to the repository that contains your website files.
+2. Make sure that your website files are located in the main branch and in the root directory of the repository.
+3. If your website is not already live, make sure that the index.html file is the main page of your website.
+4. Click on the "Settings" tab in your repository.
+5. Scroll down to the "GitHub Pages" section.
+6. In the "Source" dropdown menu, select the branch where your website files are located. For a simple website with only HTML and CSS, this is typically the main branch.
+7. In the "Path" field, make sure that the root directory is specified (i.e., "/").
+8. Click "Save" to generate your website.
+9. Wait a few minutes for GitHub to build and deploy your website.
+10. Once the website is deployed, visit the GitHub Pages URL to view your site.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

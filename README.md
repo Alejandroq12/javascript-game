@@ -102,27 +102,11 @@ No additional installations are necessary due to the nature of this project.
 
 ### Usage
 
-To run the project, execute the following command:
-
-<!--
-Example command:
-
-```sh
-  rails server
-```
---->
+To run the project just open the `index.html` file with you web browser.
 
 ### Run tests
 
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
+Test will be available in the future. I am working on it.
 
 ### Deployment
 

@@ -3,31 +3,6 @@ This game was created using JavaScript, CSS and HTML
 
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
--->
-
 <div align="center">
   <img src="assets/logo.png" alt="logo" width="650"  height="auto" />
   <br/>
@@ -66,7 +41,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 The Warrior <a name="about-project"></a>
 
-**The Warrior** is a cool JavaScript game crated to practice advanced concepts.
+**The Warrior:** is an interactive, browser-based 2D game developed using pure JavaScript. It features a dynamic environment, unique characters, various props, and intriguing sound effects. The player can control characters via keyboard inputs and utilize various power-ups and weapons to interact with the environment. The game shows a high degree of interactivity and is enriched with visually attractive assets and good sounds, providing a captivating user experience.
 
 ## 🛠 Built With <a name="built-with"></a>
 
